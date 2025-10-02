@@ -1,0 +1,19 @@
+name: Test Secret
+
+on:
+  push:
+    branches:
+      - main  # or your default branch
+
+jobs:
+  test-secret:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Show secret safely
+        run: echo "Secret is set, but not printing it directly!"
+        env:
+          MY_SECRET: ${{ secrets.PASSWORD_RUN }}
